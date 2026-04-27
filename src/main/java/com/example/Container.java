@@ -35,15 +35,16 @@ public class Container {
         if (!isEmpty()) {
             if (head.data == x)
                 head = head.next;
-
-            Node node = head;
-            boolean flag = false;
-            while (node.next != null && !flag) {
-                if (node.next.data == x) {
-                    node.next = node.next.next;
-                    flag = true;
+            else {
+                Node node = head;
+                boolean flag = false;
+                while (node.next != null && !flag) {
+                    if (node.next.data == x) {
+                        node.next = node.next.next;
+                        flag = true;
+                    }
+                    node = node.next;
                 }
-                node = node.next;
             }
         }
     }
@@ -63,15 +64,15 @@ public class Container {
     }
 
     public void deleteAllByValue(int x) {
-        if (!isEmpty()) {
-            while (head != null && head.data == x)
-                head = head.next;
+        while (head != null && head.data == x)
+            head = head.next;
 
+        if (!isEmpty()) {
             Node node = head;
             while (node.next != null) {
                 if (node.next.data == x)
                     node.next = node.next.next;
-                node = node.next;
+                else node = node.next;
             }
         }
     }
@@ -84,9 +85,8 @@ public class Container {
                 else {
                     Node node = head;
                     for (int i=1;i<n-1;++i) {
-                        if (node.next != null)
+                        if (node != null)
                             node = node.next;
-                        else node = null;
                     }
                     if (node != null)
                         node.next = node.next.next;
